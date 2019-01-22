@@ -27,6 +27,11 @@ class PiGenerator:
         return math.sqrt(6 * self.SerieInvCarres(n))
 
     def SerieInvCarresImparis(self, n):
+        """
+        Return the "SerieInvCarresImparis" with n depth
+        :param int n: max of sum
+        :return float: serieinvcarresimparis
+        """
         if (n < 0):
             raise ValueError('N need to be positive')
         result = 0
