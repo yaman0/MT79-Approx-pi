@@ -25,3 +25,11 @@ class PiGenerator:
         :return float: approach of pi
         """
         return math.sqrt(6 * self.SerieInvCarres(n))
+
+    def SerieInvCarresImparis(self, n):
+        if (n < 0):
+            raise ValueError('N need to be positive')
+        result = 0
+        for k in range(1, n + 1):
+            result += 1.0 / math.pow(2 * k + 1, 2)
+        return result
