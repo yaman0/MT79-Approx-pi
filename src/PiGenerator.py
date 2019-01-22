@@ -46,3 +46,6 @@ class PiGenerator:
         :return float: approach of pi
         """
         return math.sqrt(8 * self.SerieInvCarresImparis(n))
+
+    def realPi(self):
+        return math.pi
