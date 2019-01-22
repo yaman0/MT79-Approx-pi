@@ -35,6 +35,14 @@ class PiGenerator:
         if (n < 0):
             raise ValueError('N need to be positive')
         result = 0
-        for k in range(1, n + 1):
-            result += 1.0 / math.pow(2 * k + 1, 2)
+        for k in range(0, n + 1):
+            result += 1 / math.pow((2 * k) + 1, 2)
         return result
+
+    def MethodeSerieInvCarresImparis(self, n):
+        """
+        Compute approach of pi with SerieInvCarresImparis
+        :param int n: depth of SerieInvCarresImparis
+        :return float: approach of pi
+        """
+        return math.sqrt(8 * self.SerieInvCarresImparis(n))

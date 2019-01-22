@@ -28,10 +28,19 @@ def test_MethodeSerieInvCarres_should_raise_value_error(object):
 
 
 def test_SerieInvCarresImparis_should_works(object):
-    assert object.SerieInvCarresImparis(2) == 0.1511111111111111
-    assert object.SerieInvCarresImparis(4) == 0.1838649533887629
+    assert object.SerieInvCarresImparis(2) == 1.1511111111111112
+    assert object.SerieInvCarresImparis(4) == 1.183864953388763
 
 
 def test_SerieInvCarresImparis_with_negative_should_raise_value_error(object):
     with pytest.raises(ValueError):
         object.SerieInvCarresImparis(-1)
+
+
+def test_MethodeSerieInvCarresImparis_should_works(object):
+    assert object.MethodeSerieInvCarresImparis(50) == 3.135345271429545
+
+
+def test_MethodeSerieInvCarresImparis_should_raise_value_error(object):
+    with pytest.raises(ValueError):
+        object.MethodeSerieInvCarresImparis(-1)
