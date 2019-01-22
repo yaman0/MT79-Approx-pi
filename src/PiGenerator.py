@@ -17,3 +17,11 @@ class PiGenerator:
         for k in range(1, n+1):
             result += 1 / math.pow(k, 2)
         return result
+
+    def MethodeSerieInvCarres(self,n):
+        """
+        Compute approach of pi with SerieInvCarres
+        :param int n: depth of SerieInvCarres
+        :return float: approach of pi
+        """
+        return math.sqrt(6*self.SerieInvCarres(n))
