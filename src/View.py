@@ -16,4 +16,7 @@ class View:
 
     @abstractmethod
     def view(self):
-        return
+        """
+        Display view
+        """
+        pass
