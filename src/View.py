@@ -8,7 +8,7 @@ class View:
     def addData(self, data):
         """
         Add data to the viewer
-        :param list data: data to insert
+        :param Data data: data to insert
         :return View: self
         """
         self.datas.append(data)
