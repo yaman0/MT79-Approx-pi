@@ -1,4 +1,5 @@
 import argparse
+
 from src.Data import Data
 from src.Graph import Graph
 from src.PiGenerator import PiGenerator
@@ -11,6 +12,7 @@ def gen_pi(args):
     elif args.method == 'i':
         print(engine.MethodeSerieInvCarresImparis(args.depth))
 
+
 def displayGraphDiffMethods(args):
     engine = PiGenerator()
     view = Graph()
@@ -19,10 +21,11 @@ def displayGraphDiffMethods(args):
     for k in range(0, args.depth):
         result_normal.append(engine.MethodeSerieInvCarres(k) - engine.realPi())
         result_imparis.append(engine.MethodeSerieInvCarresImparis(k) - engine.realPi())
-    view.addData(Data(result_normal, label='classic'))\
-        .addData(Data(result_imparis, label='imparis'))\
-        .showLegend()\
+    view.addData(Data(result_normal, label='classic')) \
+        .addData(Data(result_imparis, label='imparis')) \
+        .showLegend() \
         .view()
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -39,7 +42,7 @@ if __name__ == '__main__':
     # Generation of diffgraph parse
     diffgraph_pars = subparser.add_parser('diffgraph', help='Generate pi')
     diffgraph_pars.add_argument("depth", help="Depth of sum",
-                            type=int)
+                                type=int)
     diffgraph_pars.set_defaults(func=displayGraphDiffMethods)
 
     args = parser.parse_args()
