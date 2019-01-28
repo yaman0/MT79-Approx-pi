@@ -1,4 +1,5 @@
 import argparse
+import math
 
 from src import tools
 from src.Data import Data
@@ -21,8 +22,8 @@ def displayGraphDiffMethods(args):
     result_normal = []
     result_imparis = []
     for k in range(0, args.depth):
-        result_normal.append(engine.MethodeSerieInvCarres(k) - engine.realPi())
-        result_imparis.append(engine.MethodeSerieInvCarresImparis(k) - engine.realPi())
+        result_normal.append(math.fabs(engine.MethodeSerieInvCarres(k) - engine.realPi()))
+        result_imparis.append(math.fabs(engine.MethodeSerieInvCarresImparis(k) - engine.realPi()))
     view.addData(Data(result_normal, label='classic')) \
         .addData(Data(result_imparis, label='imparis')) \
         .showLegend() \
