@@ -1,4 +1,5 @@
 import math
+from random import random
 
 
 class PiGenerator:
@@ -59,7 +60,7 @@ class PiGenerator:
         result = 0
         for k in range(0, n + 1):
             result += ((math.factorial(4 * k)) / (math.pow(math.factorial(k), 4))) * (
-                        (1103 + 26390 * k) / math.pow((4 * 99), (4 * k)))
+                    (1103 + 26390 * k) / math.pow((4 * 99), (4 * k)))
         return result
 
     def methodSerieRamanujan(self, n):
@@ -69,3 +70,14 @@ class PiGenerator:
         :return: pi
         """
         return 1 / (((2 * math.sqrt(2)) / 9801) * self.serieRamanujan(n))
+
+    def tirage(self, n):
+        """
+        return a list of random position between 0 and 1
+        :param int n: size of list
+        :return: list of random position between 0 and 1
+        """
+        lists = []
+        for k in range(0, n):
+            lists.append([random(), random()])
+        return lists

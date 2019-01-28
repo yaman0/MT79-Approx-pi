@@ -52,3 +52,14 @@ def test_SerieRamanujan_should_works(object):
 
 def test_methodSerieRamanujan_should_work(object):
     assert object.methodSerieRamanujan(5) == 3.141592653589793
+
+
+def test_tirage_should_return_array_with_10_length(object):
+    result = object.tirage(10)
+    assert len(result) == 10
+
+
+def test_tirage_should_return_array_with_random_positions_between_0_and_1(object):
+    for item in object.tirage(10):
+        assert 0 < item[0] < 1
+        assert 0 < item[1] < 1
