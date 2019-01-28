@@ -42,11 +42,12 @@ def findpiwithprecision(args):
         depth += 1
     print("Result : " + str(depth))
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-
     # Generation of pi parse
-    subparser = parser.add_subparsers()
+    subparser = parser.add_subparsers(dest='cmd')
+    subparser.required = True
     genpi_pars = subparser.add_parser('genpi', help='Generate pi')
     genpi_pars.add_argument("--method", help="Choose the method (normal(n), imparis(i))",
                             type=str, default='n')
