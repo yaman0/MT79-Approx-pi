@@ -44,3 +44,11 @@ def test_MethodeSerieInvCarresImparis_should_works(object):
 def test_MethodeSerieInvCarresImparis_should_raise_value_error(object):
     with pytest.raises(ValueError):
         object.MethodeSerieInvCarresImparis(-1)
+
+
+def test_SerieRamanujan_should_works(object):
+    assert object.serieRamanujan(3) == 1103.0000268319745
+
+
+def test_methodSerieRamanujan_should_work(object):
+    assert object.methodSerieRamanujan(5) == 3.141592653589793

@@ -49,3 +49,23 @@ class PiGenerator:
 
     def realPi(self):
         return math.pi
+
+    def serieRamanujan(self, n):
+        """
+        computed result of serieRamanujan for a depth n
+        :param int n: depth
+        :return: serie ramanujan for n
+        """
+        result = 0
+        for k in range(0, n + 1):
+            result += ((math.factorial(4 * k)) / (math.pow(math.factorial(k), 4))) * (
+                        (1103 + 26390 * k) / math.pow((4 * 99), (4 * k)))
+        return result
+
+    def methodSerieRamanujan(self, n):
+        """
+        Generate Pi with the ramanujan's serie
+        :param int n: depth
+        :return: pi
+        """
+        return 1 / (((2 * math.sqrt(2)) / 9801) * self.serieRamanujan(n))
