@@ -24,6 +24,8 @@ class Graph(View, ABC):
         """
         for data in self.datas:
             plt.plot(data.data, label='{}'.format(data.label))
+        for point in self.points:
+            plt.scatter(point.x, point.y, s=point.size, c=point.color)
         if self.legend:
             plt.legend()
         plt.show()

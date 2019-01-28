@@ -5,6 +5,7 @@ from src import tools
 from src.Data import Data
 from src.Graph import Graph
 from src.PiGenerator import PiGenerator
+from src.Point import Point
 
 
 def gen_pi(args):
@@ -15,6 +16,7 @@ def gen_pi(args):
         print(engine.MethodeSerieInvCarresImparis(args.depth))
     elif args.method == 'r':
         print(engine.methodSerieRamanujan(args.depth))
+
 
 def displayGraphDiffMethods(args):
     engine = PiGenerator()
@@ -47,6 +49,14 @@ def findpiwithprecision(args):
     print("Result : " + str(depth))
 
 
+def montecarlo(args):
+    engine = PiGenerator()
+    points = engine.tirage(args.n)
+    g = Graph()
+    g.addPoints([Point(p[0], p[1], size=5, color='red') for p in points])
+    g.view()
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     # Generation of pi parse
@@ -72,6 +82,12 @@ if __name__ == '__main__':
     findpi_pars.add_argument("--method", help="Choose the method (normal(n), imparis(i), ramanujan(r))",
                              type=str, default='n')
     findpi_pars.set_defaults(func=findpiwithprecision)
+
+    # monte carlo
+    findpi_pars = subparser.add_parser('carlo', help='Show cercle of monte carlo')
+    findpi_pars.add_argument("n", help="Number of point",
+                             type=int)
+    findpi_pars.set_defaults(func=montecarlo)
 
     args = parser.parse_args()
     args.func(args)

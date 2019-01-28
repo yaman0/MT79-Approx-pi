@@ -4,6 +4,7 @@ from abc import abstractmethod
 class View:
     def __init__(self):
         self.datas = []
+        self.points = []
 
     def addData(self, data):
         """
@@ -12,6 +13,15 @@ class View:
         :return View: self
         """
         self.datas.append(data)
+        return self
+
+    def addPoints(self, points):
+        """
+        Add point to view
+        :param list of Point points: points
+        :return View: self
+        """
+        self.points.extend(points)
         return self
 
     @abstractmethod
