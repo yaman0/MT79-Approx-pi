@@ -51,9 +51,15 @@ def findpiwithprecision(args):
 
 def montecarlo(args):
     engine = PiGenerator()
-    points = engine.tirage(args.n)
+    coord = engine.tirage(args.n)
     g = Graph()
-    g.addPoints([Point(p[0], p[1], size=5, color='red') for p in points])
+    points = []
+    for p in coord:
+        color = 'blue' if pow(p[0], 2) + pow(p[1], 2) < 1 else 'red'
+        points.append(Point(p[0], p[1], size=5, color=color))
+    g.addPoints(points)
+    g.addCircle1()
+    g.setrange([0, 1], [0, 1])
     g.view()
 
 
