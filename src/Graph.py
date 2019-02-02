@@ -16,16 +16,28 @@ class Graph(View, ABC):
     def showLegend(self):
         """
         enable the legends when you render graph
-        :return Graph: Self
+        :return Graph: self
         """
         self.legend = True
         return self
 
     def addCircle1(self):
+        """
+        add a circle witch radius=1 in the circle
+        :return Graph: self
+        """
         self.circle = True
+        return self
 
     def setrange(self, xrange, yrange):
+        """
+        set a specifi range of view
+        :param list xrange: x range
+        :param list yrange: y range
+        :return Graph: self
+        """
         self.range = [xrange, yrange]
+        return self
 
     def view(self):
         """
