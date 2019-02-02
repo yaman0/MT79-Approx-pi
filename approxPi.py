@@ -16,6 +16,8 @@ def gen_pi(args):
         print(engine.MethodeSerieInvCarresImparis(args.depth))
     elif args.method == 'r':
         print(engine.methodSerieRamanujan(args.depth))
+    elif args.method == 'm':
+        print(engine.methodMonteCarlo(args.depth))
 
 
 def displayGraphDiffMethods(args):
@@ -46,6 +48,8 @@ def findpiwithprecision(args):
             estimation = engine.MethodeSerieInvCarresImparis(depth)
         elif (args.method == 'r'):
             estimation = engine.methodSerieRamanujan(depth)
+        elif (args.method == 'm'):
+            estimation = engine.methodMonteCarlo(depth)
     print("Result : " + str(depth))
 
 
@@ -85,12 +89,13 @@ if __name__ == '__main__':
     findpi_pars = subparser.add_parser('findpi', help='Find index to have pi with a precision')
     findpi_pars.add_argument("precision", help="Precision of pi",
                              type=int)
-    findpi_pars.add_argument("--method", help="Choose the method (normal(n), imparis(i), ramanujan(r))",
+    findpi_pars.add_argument("--method",
+                             help="Choose the method (normal(n), imparis(i), ramanujan(r), monte-carlo(m)",
                              type=str, default='n')
     findpi_pars.set_defaults(func=findpiwithprecision)
 
     # monte carlo
-    findpi_pars = subparser.add_parser('carlo', help='Show cercle of monte carlo')
+    findpi_pars = subparser.add_parser('circle', help='Show circle of monte carlo')
     findpi_pars.add_argument("n", help="Number of point",
                              type=int)
     findpi_pars.set_defaults(func=montecarlo)

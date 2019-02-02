@@ -81,3 +81,26 @@ class PiGenerator:
         for k in range(0, n):
             lists.append([random(), random()])
         return lists
+
+    def tirageOnlyInCircleR1(self, n):
+        """
+        return a list of random position between 0 and 1 only in the circle with radius 1
+        :param int n: number of point
+        :return list: list of random position between 0 and 1 only in the circle with radius 1
+        """
+        lists = []
+        for k in range(0, n):
+            x = random()
+            y = random()
+            if pow(x, 2) + pow(y, 2) < 1:
+                lists.append([x, y])
+        return lists
+
+    def methodMonteCarlo(self, depth):
+        """
+        generate approximation of number pi with
+        :param int depth: depth
+        :return: approximation of pi
+        """
+        coord = self.tirageOnlyInCircleR1(depth)
+        return 4 * (len(coord) / depth)

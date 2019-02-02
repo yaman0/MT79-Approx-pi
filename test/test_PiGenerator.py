@@ -63,3 +63,17 @@ def test_tirage_should_return_array_with_random_positions_between_0_and_1(object
     for item in object.tirage(10):
         assert 0 < item[0] < 1
         assert 0 < item[1] < 1
+
+
+def test_methodMonteCarlo_should_work(object, monkeypatch):
+    def mockedList(n):
+        return [0 for k in range(1000)]
+
+    monkeypatch.setattr(object, 'tirageOnlyInCircleR1', mockedList)
+    assert object.methodMonteCarlo(1500) == 4 * (1000 / 1500)
+
+
+def test_tirageOnlyInCircleR1_should_return_only_point_in_circle(object):
+    points = object.tirageOnlyInCircleR1(50)
+    for p in points:
+        assert pow(p[0], 2) + pow(p[1], 2) < 1
