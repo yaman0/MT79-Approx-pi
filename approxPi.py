@@ -34,6 +34,16 @@ def displayGraphDiffMethods(args):
         .view()
 
 
+def displayGraphDiffMcMethods(args):
+    engine = PiGenerator()
+    view = Graph()
+    result = []
+    for k in range(0, args.depth):
+        result.append(math.fabs(engine.MethodeSerieInvCarres(k) - engine.realPi()))
+    view.addData(Data(result, label='classic', type='point')) \
+        .showLegend() \
+        .view()
+
 def findpiwithprecision(args):
     engine = PiGenerator()
     pi = engine.realPi()
@@ -85,6 +95,12 @@ if __name__ == '__main__':
     diffgraph_pars.add_argument("depth", help="Depth of sum",
                                 type=int)
     diffgraph_pars.set_defaults(func=displayGraphDiffMethods)
+
+    # Generation of diffgraph parse
+    diffgraph_pars = subparser.add_parser('diffgraphmc', help='Diffgraph for monte-carlo')
+    diffgraph_pars.add_argument("depth", help="Depth of sum",
+                                type=int)
+    diffgraph_pars.set_defaults(func=displayGraphDiffMcMethods)
 
     # Generation of findpi parse
     findpi_pars = subparser.add_parser('findpi', help='Find index to have pi with a precision')

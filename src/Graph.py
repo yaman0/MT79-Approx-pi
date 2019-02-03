@@ -44,7 +44,10 @@ class Graph(View, ABC):
         Display view
         """
         for data in self.datas:
-            plt.plot(data.data, label='{}'.format(data.label))
+            if data.type == 'point':
+                plt.plot(data.data, 'o', label='{}'.format(data.label))
+            else:
+                plt.plot(data.data, label='{}'.format(data.label))
         for point in self.points:
             plt.scatter(point.x, point.y, s=point.size, c=point.color)
 
