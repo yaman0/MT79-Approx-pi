@@ -21,7 +21,7 @@ python approxPi.py -h
 ```bash
 python approxPi.py genpi --method r 20
 ```
-- Search pi's 4^^th^^ decimals with imparis method
+- Search pi's 4th decimals with imparis method
 ```bash
 python approxPi.py findpi --method i 4
 ```
