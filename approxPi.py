@@ -39,7 +39,7 @@ def findpiwithprecision(args):
     pi = engine.realPi()
     pi = tools.roundless(pi, args.precision)
     estimation = 0
-    depth = 0
+    depth = -1
     while not tools.roundless(estimation, args.precision) == pi:
         depth += 1
         if (args.method == 'n'):
@@ -50,6 +50,7 @@ def findpiwithprecision(args):
             estimation = engine.methodSerieRamanujan(depth)
         elif (args.method == 'm'):
             estimation = engine.methodMonteCarlo(depth)
+
     print("Result : " + str(depth))
 
 
