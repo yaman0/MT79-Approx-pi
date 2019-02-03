@@ -44,6 +44,7 @@ def displayGraphDiffMcMethods(args):
         .showLegend() \
         .view()
 
+
 def findpiwithprecision(args):
     engine = PiGenerator()
     pi = engine.realPi()
@@ -84,14 +85,15 @@ if __name__ == '__main__':
     subparser = parser.add_subparsers(dest='cmd')
     subparser.required = True
     genpi_pars = subparser.add_parser('genpi', help='Generate pi')
-    genpi_pars.add_argument("--method", help="Choose the method (normal(n), imparis(i), ramanujan(r))",
+    genpi_pars.add_argument("--method", help="Choose the method (normal(n), imparis(i), ramanujan(r), monte-carlo(m))",
+                            choices=['n', 'i', 'r', 'm'],
                             type=str, default='n')
     genpi_pars.add_argument("depth", help="Depth of sum",
                             type=int)
     genpi_pars.set_defaults(func=gen_pi)
 
     # Generation of diffgraph parse
-    diffgraph_pars = subparser.add_parser('diffgraph', help='Generate pi')
+    diffgraph_pars = subparser.add_parser('diffgraph', help='Display graph to compare imparis and classic method')
     diffgraph_pars.add_argument("depth", help="Depth of sum",
                                 type=int)
     diffgraph_pars.set_defaults(func=displayGraphDiffMethods)
@@ -103,11 +105,12 @@ if __name__ == '__main__':
     diffgraph_pars.set_defaults(func=displayGraphDiffMcMethods)
 
     # Generation of findpi parse
-    findpi_pars = subparser.add_parser('findpi', help='Find index to have pi with a precision')
+    findpi_pars = subparser.add_parser('findpi', help='Find index to have pi with a specific precision')
     findpi_pars.add_argument("precision", help="Precision of pi",
                              type=int)
     findpi_pars.add_argument("--method",
-                             help="Choose the method (normal(n), imparis(i), ramanujan(r), monte-carlo(m)",
+                             choices=['n', 'i', 'r', 'm'],
+                             help="Choose the method (normal(n), imparis(i), ramanujan(r), monte-carlo(m))",
                              type=str, default='n')
     findpi_pars.set_defaults(func=findpiwithprecision)
 
