@@ -103,4 +103,4 @@ class PiGenerator:
         :return: approximation of pi
         """
         coord = self.tirageOnlyInCircleR1(depth)
-        return 4 * (len(coord) / depth)
+        return 4 * (len(coord) / depth) if not depth == 0 else 0
